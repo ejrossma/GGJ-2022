@@ -15,6 +15,7 @@ ExportedObj/
 *.unityproj
 *.sln
 *.suo
+*.log
 *.tmp
 *.user
 *.userprefs
