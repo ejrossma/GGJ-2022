@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //chase the player
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        
     }
 }
