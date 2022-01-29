@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public float difficulty; //base difficulty is 1
-    public Enemy_Spawner es;
+    private Enemy_Spawner es;
 
     public int metal = 0;
     public int guts = 0;
@@ -17,11 +17,10 @@ public class GameManager : MonoBehaviour
     {
         es = FindObjectOfType<Enemy_Spawner>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i+=2)
         {
-            es.generateEnemy(new Vector3(10.0f * i, 0.0f, 0.0f));
+            es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
         }
-        
     }
 
     // Update is called once per frame
