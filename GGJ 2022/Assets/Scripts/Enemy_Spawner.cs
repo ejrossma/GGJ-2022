@@ -15,7 +15,7 @@ public class Enemy_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void generateEnemy(Vector3 position) {

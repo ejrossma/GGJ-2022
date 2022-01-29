@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int guts = 0;
     public float playerHealth = 100;
 
-    // Start is called before the first frame update
     void Start()
     {
         es = FindObjectOfType<Enemy_Spawner>();
@@ -22,8 +21,6 @@ public class GameManager : MonoBehaviour
             es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
 
