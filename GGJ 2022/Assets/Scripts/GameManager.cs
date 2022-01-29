@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int guts = 0;
     public float playerHealth = 100;
 
+    public Text healthText;
+
     void Start()
     {
         es = FindObjectOfType<Enemy_Spawner>();
@@ -20,9 +23,24 @@ public class GameManager : MonoBehaviour
         {
             es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
         }
+        healthText.text = "Health: " + playerHealth;
     }
     void Update()
     {
 
     }
+
+    public void takeDamage(int damage)
+    {
+        playerHealth -= damage;
+        healthText.text = "Health: " + playerHealth;
+    }
+
+    // //player takes damage
+    // //canvas elements get updated
+    // //gets knocked back
+    // IEnumerator takeDamage()
+    // {
+
+    // }
 }

@@ -10,6 +10,7 @@ public class Enemy_Spawner : MonoBehaviour
 
     public float baseHealth;
     public float baseSpeed;
+    public float baseDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +24,13 @@ public class Enemy_Spawner : MonoBehaviour
         //get health and speed based on size + time into game
         float enemyHealth = enemySize * baseHealth * gm.difficulty;
         float enemySpeed = (baseSpeed / enemySize) * gm.difficulty;
+        float enemyDamage = enemySize * baseDamage * gm.difficulty;
 
         GameObject spawnedEnemy = Instantiate(enemy, position, Quaternion.identity);
         spawnedEnemy.transform.parent = transform;
         spawnedEnemy.GetComponent<Enemy>().hp = (int) enemyHealth;
         spawnedEnemy.GetComponent<Enemy>().speed = enemySpeed;
+        spawnedEnemy.GetComponent<Enemy>().damage = (int) enemyDamage;
         spawnedEnemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
     }
 }

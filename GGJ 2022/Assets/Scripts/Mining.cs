@@ -23,6 +23,7 @@ public class Mining : MonoBehaviour
         if(nextMetalMined >= MiningRate){
             nextMetalMined = 0;
             FindObjectOfType<GameManager>().metal += 1;
+            //update canvas
         }
     }
     private void OnTriggerStay2D(Collider2D other) {

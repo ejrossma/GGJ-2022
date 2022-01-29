@@ -9,14 +9,17 @@ public class Enemy : MonoBehaviour
     //lesser size = less hp & more speed
     public int hp;
     public float speed;
+    public int damage;
     
     public AIPath pathfind;
+    private GameManager gm;
 
     private GameObject player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         pathfind.maxSpeed = speed;       
     }
 
@@ -24,5 +27,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.name == "Player_Collider")
+        {
+            gm.takeDamage(damage);
+            Debug.Log("The Player took " + damage + " damage!");
+        }
     }
 }
