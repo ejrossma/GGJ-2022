@@ -46,15 +46,18 @@ public class TowerScript : MonoBehaviour
 
         if(enemyList.Count > 0 )
         {
+
             //choose first character that is inside of the list in order to attack at
             GameObject currTarget = enemyList[0];
             GameObject currBullet = Instantiate(bullet, gameObject.transform.position ,Quaternion.identity);
-            currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
+            //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
+            currBullet.GetComponent<BulletScript>().direction = (currTarget.transform.position - transform.position).normalized; 
         }
     }
     public void enemyEnteredArea(Collider2D enemy)
     {
         enemyList.Add(enemy.gameObject);
+        print("enemy in tower range");
     }
     public void enemyExitedArea(Collider2D enemy)
     {
