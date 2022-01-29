@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public float difficulty; //base difficulty is 1
     public Enemy_Spawner es;
 
+    public int metal = 0;
+    public int guts = 0;
+    public float playerHealth = 100;
+
     // Start is called before the first frame update
     void Start()
     {
