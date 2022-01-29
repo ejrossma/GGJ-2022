@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 586362978}
   m_Layer: 0
   m_Name: the_rock
-  m_TagString: Untagged
+  m_TagString: Mineable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,9 +242,10 @@ GameObject:
   m_Component:
   - component: {fileID: 766575581}
   - component: {fileID: 766575580}
-  - component: {fileID: 766575579}
   - component: {fileID: 766575583}
   - component: {fileID: 766575582}
+  - component: {fileID: 766575579}
+  - component: {fileID: 766575584}
   m_Layer: 0
   m_Name: Paul_Blart
   m_TagString: Untagged
@@ -365,7 +366,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.024823666, y: -0.32270145}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -376,8 +377,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.94, y: 10.8}
+  m_Size: {x: 10.188231, y: 11.941868}
   m_EdgeRadius: 0
+--- !u!114 &766575584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766575578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a26824f284cd440a9d35de5d22aa53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1423713613
 GameObject:
   m_ObjectHideFlags: 0
