@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Mining : MonoBehaviour
 {
+    public float MiningRate = 1f;
     private bool canMine = false;
+    private float nextMetalMined = 0;
+    private bool isMining = false;
     private void Update() {
-        if(canMine){
+        if(Input.GetKey(KeyCode.Mouse0))
+            isMining = true;
+        else
+            isMining = false;
+
+        if(canMine && isMining){
             Mine();
         }
     }
     private void Mine(){
-        if(Input.GetKey(KeyCode.Mouse0)){
-            //Switch to mining animation
-            //Start collecting resources in a timed interval fashion
+        nextMetalMined += Time.deltaTime;
+        if(nextMetalMined >= MiningRate){
+            nextMetalMined = 0;
+            FindObjectOfType<GameManager>().metal += 1;
         }
     }
     private void OnTriggerStay2D(Collider2D other) {

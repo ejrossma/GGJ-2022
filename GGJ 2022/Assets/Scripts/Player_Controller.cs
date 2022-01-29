@@ -9,6 +9,7 @@ public class Player_Controller : MonoBehaviour
     private float inputY;
     private Vector2 inputVector;
     private Rigidbody2D playerRB;
+    
     private void Start() {
         playerRB = GetComponent<Rigidbody2D>();
     }
