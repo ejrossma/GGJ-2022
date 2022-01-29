@@ -8,6 +8,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private GameObject range;
     private CircleCollider2D rangeCollider;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
     
 
     private List<GameObject> enemyList = new List<GameObject>();
@@ -15,6 +16,22 @@ public class TowerScript : MonoBehaviour
     private string towerType = "base";
     private float fireRate = 3.0f;
     private float timeUntilFire = 3.0f;
+
+
+    void updateTowerType(string type)
+    {
+        towerType = type;
+        switch (towerType)
+        {
+            case "alien":
+                //modify stats here
+                break;
+            case "mech":
+                //modify stats here
+                break;
+        }
+
+    }
 
 
 
