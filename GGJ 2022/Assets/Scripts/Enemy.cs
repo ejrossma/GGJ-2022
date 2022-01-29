@@ -9,11 +9,18 @@ public class Enemy : MonoBehaviour
     public int hp;
     public int speed;
 
+    private GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player.transform.position);
+    }
+
     // Update is called once per frame
     void Update()
     {
         //chase the player
-
-        //MoveTowards(Player)
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 }

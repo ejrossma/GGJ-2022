@@ -8,8 +8,8 @@ public class Enemy_Spawner : MonoBehaviour
 
     public GameManager gm;
 
-    public float baseHealth = 10;
-    public float baseSpeed = 5;
+    public float baseHealth;
+    public float baseSpeed;
 
     // Start is called before the first frame update
     void Start()

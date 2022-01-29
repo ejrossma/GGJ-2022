@@ -128,3 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   speed: 0
+  player: {fileID: 3129043564219404261, guid: e16404c43708d2d4391364e07f1bd828, type: 3}
