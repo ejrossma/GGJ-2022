@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        es = GameObject.Find("Enemies").GetComponent<Enemy_Spawner>();
+        es = FindObjectOfType<Enemy_Spawner>();
 
         for (int i = 0; i < 10; i++)
         {
@@ -27,6 +27,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
