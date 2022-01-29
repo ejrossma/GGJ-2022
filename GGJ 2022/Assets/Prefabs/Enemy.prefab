@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   speed: 0
+  pathfind: {fileID: 4154778784186626499}
 --- !u!114 &3286416707738317078
 MonoBehaviour:
   m_ObjectHideFlags: 0

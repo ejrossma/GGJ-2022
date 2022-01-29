@@ -27,7 +27,7 @@ public class Enemy_Spawner : MonoBehaviour
         GameObject spawnedEnemy = Instantiate(enemy, position, Quaternion.identity);
         spawnedEnemy.transform.parent = transform;
         spawnedEnemy.GetComponent<Enemy>().hp = (int) enemyHealth;
-        spawnedEnemy.GetComponent<Enemy>().speed = (int) enemySpeed;
+        spawnedEnemy.GetComponent<Enemy>().speed = enemySpeed;
         spawnedEnemy.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
     }
 }
