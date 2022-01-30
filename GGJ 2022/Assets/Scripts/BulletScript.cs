@@ -19,6 +19,7 @@ public class BulletScript : MonoBehaviour
     {
 
         Vector3 move = direction * moveBy * Time.deltaTime;
+        transform.up = direction;
         transform.position += move;
         timer -= Time.deltaTime;
         if(timer <= 0)

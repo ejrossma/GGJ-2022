@@ -9,7 +9,8 @@ public class TowerScript : MonoBehaviour
     private CircleCollider2D rangeCollider;
     [SerializeField] private GameObject bullet;
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
-   [SerializeField]public int Damage = 100;
+    [SerializeField] public int Damage = 100;
+    [SerializeField] public GameObject Barrel;
     
 
     private List<GameObject> enemyList = new List<GameObject>();
