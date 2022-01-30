@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float playerHealth = 100;
 
     public Text healthText;
+    public bool playerIframes;
 
     void Start()
     {
@@ -27,20 +28,22 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(int damage, Transform enemyTransform)
     {
+        FindObjectOfType<Player_Controller>().knockBack(enemyTransform);
         playerHealth -= damage;
         healthText.text = "Health: " + playerHealth;
+        playerIframes = true;
+        StartCoroutine(takeIframesAway());
+
     }
-
-    // //player takes damage
-    // //canvas elements get updated
-    // //gets knocked back
-    // IEnumerator takeDamage()
-    // {
-
-    // }
+    private IEnumerator takeIframesAway(){
+        yield return new WaitForSeconds(1f);
+        //change player sprite or animation here for hurt state
+        //play sound of getting absolutly owned here
+        playerIframes = false;
+        yield return null;
+    }
 }

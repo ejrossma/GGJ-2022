@@ -94,12 +94,10 @@ public class TowerScript : MonoBehaviour
     public void enemyEnteredArea(Collider2D enemy)
     {
         enemyList.Add(enemy.gameObject);
-        Debug.Log("Enemy entered range");
     }
     public void enemyExitedArea(Collider2D enemy)
     {
         enemyList.Remove(enemy.gameObject);
-        Debug.Log("Enemy exited range");
     }
 
     public void enemyStayedArea(Collider2D enemy)

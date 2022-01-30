@@ -51,14 +51,15 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.name == "Player_Collider")
-        {
-            gm.takeDamage(damage);
-            Debug.Log("The Player took " + damage + " damage!");
-        }
         if(col.gameObject.CompareTag("BULLET")){
             takeDamage(col.gameObject.GetComponent<BulletScript>().Damage);
             Destroy(col.gameObject);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.name == "Player_Collider" && gm.playerIframes == false)
+        {
+            gm.takeDamage(damage, this.transform);
         }
     }
 }
