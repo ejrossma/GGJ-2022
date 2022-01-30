@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5359583835362106210}
   - component: {fileID: 6501088744057323824}
+  - component: {fileID: -3794968611310184505}
+  - component: {fileID: 8938400283927691839}
   m_Layer: 0
   m_Name: Guts
   m_TagString: Untagged
@@ -82,3 +84,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3794968611310184505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188692170901084403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822717162a86e46a0a55d1cb12528b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &8938400283927691839
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188692170901084403}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.061893463, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.38807106

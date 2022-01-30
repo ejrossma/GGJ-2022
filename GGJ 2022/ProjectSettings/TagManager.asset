@@ -8,6 +8,7 @@ TagManager:
   - ENEMY
   - BULLET
   - TURRET
+  - GUTS
   layers:
   - Default
   - TransparentFX
