@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public float difficulty; //base difficulty is 1
     public Enemy_Spawner es;
+    public float enemySpawnRate = 3f;
+    private int enemyCluster;
+    private float enemySpawnWait;
 
     public int metal = 0;
     public int guts = 0;
@@ -23,10 +26,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 20; i+=2)
-        {
-            es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
-        }
         FindObjectOfType<Player_Controller>().enabled = false;
         StartGame.SetActive(true);
         GameOver.SetActive(false);
@@ -40,9 +39,10 @@ public class GameManager : MonoBehaviour
             GameOver.SetActive(false);
             destroyEnemiesAndTurrets();
         }
-        if(gameRunning)
+        if(gameRunning){
             runGame();
-        else if(!StartGame.activeInHierarchy){
+            spawnEnemies();
+        }else if(!StartGame.activeInHierarchy){
             GameOver.SetActive(true);
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
@@ -50,6 +50,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void spawnEnemies(){
+        if(enemySpawnWait <= 0){
+            enemySpawnWait = enemySpawnRate;
+            es.generateEnemy(new Vector3(0.0f, 0.0f, 0.0f));
+        }else{
+            enemySpawnWait -= Time.deltaTime;
+        }
+    }
     private void runGame(){
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
