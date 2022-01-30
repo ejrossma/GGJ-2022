@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         if(enemySpawnWait <= 0){
             enemySpawnWait = enemySpawnRate;
             Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length + 1)].transform.position;
-            enemyCluster = Random.Range(1,4);
+            enemyCluster = Random.Range(1,5);
             for(int i = 0; 0 < enemyCluster; i++){
                 es.generateEnemy(spawnLocation);
             }
@@ -84,7 +84,8 @@ public class GameManager : MonoBehaviour
             difficultyTimer = 0f;
             enemySpawnRate -= 0.0033f;
         }
-        //Spawn Enemies
+        if(difficulty >= 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
+        if(difficulty >= 3) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
     }
     private void haltEnemiesAndTurrets(){
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("ENEMY");
