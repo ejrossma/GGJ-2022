@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public Text healthText;
     public bool playerIframes;
+    public Image HealthbarR, HealthbarL;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100;
     }
 
     public void takeDamage(int damage, Transform enemyTransform)
