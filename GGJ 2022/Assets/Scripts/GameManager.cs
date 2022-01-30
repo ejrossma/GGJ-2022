@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100;
+        HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
     }
 
     public void takeDamage(int damage, Transform enemyTransform)
