@@ -11,6 +11,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
     [SerializeField] public int Damage = 100;
     [SerializeField] public GameObject Barrel;
+    [SerializeField] Transform FiringPoint;
     [SerializeField] private float BarrelRotateSpeed = 20f;
     
 
@@ -84,7 +85,7 @@ public class TowerScript : MonoBehaviour
             print("Fire");
             //choose first character that is inside of the list in order to attack at
             GameObject currTarget = enemyList[0];
-            GameObject currBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+            GameObject currBullet = Instantiate(bullet, FiringPoint.position, Quaternion.identity);
             currBullet.GetComponent<BulletScript>().Damage = this.Damage;
             //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
             currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
