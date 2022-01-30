@@ -21,8 +21,14 @@ public class TriggerScript : MonoBehaviour
         {
             parentScript.enemyExitedArea(other);
         }
-        
+    }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ENEMY")
+        {
+            parentScript.enemyStayedArea(other);
+        }
     }
 
     // Update is called once per frame

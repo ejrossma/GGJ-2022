@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9084292215510654362}
-  - component: {fileID: 9084292215510654363}
   - component: {fileID: 9084292215510654364}
   m_Layer: 0
   m_Name: Trigger
@@ -32,19 +31,6 @@ Transform:
   m_Father: {fileID: 9084292216216009127}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9084292215510654363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9084292215510654361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca2f7335fbb1134a8dff370dc937edc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentScript: {fileID: 9084292216216009125}
 --- !u!58 &9084292215510654364
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -71,10 +57,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9084292216216009127}
   - component: {fileID: 9084292216216009126}
-  - component: {fileID: 9084292216216009125}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: TURRET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,30 +119,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 151c0eaf5b31b734c98915b778fee425, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 566d985542685c44ea09e77787ed306a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9084292216216009125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9084292216216009124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82280147b55cf6e4fa8e2ceee01094d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: {fileID: 9084292215510654361}
-  bullet: {fileID: 0}
-  spriteCollection:
-  - {fileID: 21300000, guid: 151c0eaf5b31b734c98915b778fee425, type: 3}

@@ -14,8 +14,22 @@ public class TowerScript : MonoBehaviour
     private List<GameObject> enemyList = new List<GameObject>();
 
     private string towerType = "base";
-    private float fireRate = 3.0f;
-    private float timeUntilFire = 3.0f;
+    private float fireRate = 0.25f;
+    private float timeUntilFire = 0.25f;
+
+
+    //ALIEN TOWER
+        //AOE & SLOWS
+        //NO LONGER DOES DAMAGE
+
+    //ALIEN UPGRADE
+        //DOES DAMAGE
+
+    //METAL TOWER
+        //DOUBLE BARREL
+    
+    //METAL UPGRADE
+        //INCREASED FIRE RATE
 
 
     void updateTowerType(string type)
@@ -58,15 +72,14 @@ public class TowerScript : MonoBehaviour
 
     private void fire()
     {
-        print("3 seconds between me woohoo");
+        print("Fire");
         //choose where to fire at (bullets will not be homing)
 
-        if(enemyList.Count > 0 )
+        if (enemyList.Count > 0)
         {
-
             //choose first character that is inside of the list in order to attack at
             GameObject currTarget = enemyList[0];
-            GameObject currBullet = Instantiate(bullet, gameObject.transform.position ,Quaternion.identity);
+            GameObject currBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
             //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
             currBullet.GetComponent<BulletScript>().direction = (currTarget.transform.position - transform.position).normalized; 
         }
@@ -74,14 +87,23 @@ public class TowerScript : MonoBehaviour
     public void enemyEnteredArea(Collider2D enemy)
     {
         enemyList.Add(enemy.gameObject);
-        print("enemy in tower range");
+        Debug.Log("Enemy entered range");
     }
     public void enemyExitedArea(Collider2D enemy)
     {
         enemyList.Remove(enemy.gameObject);
+        Debug.Log("Enemy exited range");
     }
 
-    
-    
-
+    public void enemyStayedArea(Collider2D enemy)
+    {
+        bool alreadyExists = false;
+        foreach(var enem in enemyList)
+        {
+            if (enem.gameObject == enemy.gameObject)
+                alreadyExists = true;
+        }
+        if (!alreadyExists)
+            enemyList.Add(enemy.gameObject);
+    }
 }
