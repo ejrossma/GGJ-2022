@@ -6,7 +6,7 @@ public class Guts : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            FindObjectOfType<GameManager>().metal += 1;
+            FindObjectOfType<GameManager>().guts += 1;
             Destroy(this.gameObject);
         }
     }
