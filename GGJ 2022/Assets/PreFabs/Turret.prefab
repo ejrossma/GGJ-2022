@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2897352617197952081}
   - component: {fileID: 6240157661149169268}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6363217302710987746}
   - component: {fileID: 4939620209133872914}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8471556243820324100}
   - component: {fileID: 6758857262611412771}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6097785526191340847}
   - component: {fileID: 5063397531421198353}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7334519388845463763}
   - component: {fileID: 7434838114169185742}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 2709961962992995117}
   - component: {fileID: 6596185415490963075}
   - component: {fileID: 8439012535460800551}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret
   m_TagString: TURRET
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 2709961964170899222}
   - component: {fileID: 6596185414658665036}
   - component: {fileID: 1128335610}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548899018323823575}
   - component: {fileID: 7676748025831518238}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6058846559701125682}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upgraded Alien Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7980536324008619275}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -733,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403014037002969381}
   - component: {fileID: 5069567001050827758}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9087411592038578585}
   - component: {fileID: 2068138531981672440}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528361299857810957}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -928,7 +928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 933077163132643878}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shoot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8469285649166001928}
   - component: {fileID: 6141353123738528479}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289337672320403707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Default Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259976371715610427}
   - component: {fileID: 6991015583559099354}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4924570682950267269}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shoot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5317779026429925266}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upgraded Metal Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4641433749099750566}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shoot Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

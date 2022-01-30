@@ -36,11 +36,13 @@ public class Mining : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.CompareTag("Mineable")){
             canMine = true;
+            other.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
          if(other.gameObject.CompareTag("Mineable")){
             canMine = false;
+            other.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }
