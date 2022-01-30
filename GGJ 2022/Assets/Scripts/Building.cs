@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Building : MonoBehaviour
 {
-    private void Update(){
+    public GameObject turret;
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            
+        }
     }
 }
