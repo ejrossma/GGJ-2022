@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private GameManager gm;
 
     private GameObject player;
+    public GameObject guts;
 
     void Start()
     {
@@ -26,15 +27,29 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(hp <= 0){
+            //Die
+            Die();
+        }
     }
-
+    private void takeDamage(int Damage){
+        Debug.Log("Working");
+        hp -= Damage;
+    }
+    private void Die(){
+        if(Random.Range(0.0f, 1.0f)  >= 0.6f)
+            Instantiate(guts, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.name == "Player_Collider")
         {
             gm.takeDamage(damage);
             Debug.Log("The Player took " + damage + " damage!");
+        }
+        if(col.gameObject.CompareTag("BULLET")){
+            takeDamage(col.gameObject.GetComponent<BulletScript>().Damage);
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - ENEMY
   - BULLET
   - TURRET
+  - GUTS
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - Rock
-  - 
-  - 
+  - Bullet Layer
+  - Enemy Layer
   - 
   - 
   - 
