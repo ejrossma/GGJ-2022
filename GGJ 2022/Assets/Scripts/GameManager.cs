@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
-    public GameObject StartGame, GameOver;
+    public GameObject StartGame, GameOver, Score;
     public GameObject[] SpawnPoints;
     public Text MetalNum, GutsNum;
     private bool gameRunning = false;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<Player_Controller>().enabled = false;
         StartGame.SetActive(true);
         GameOver.SetActive(false);
+        Score.SetActive(false);
     }
     void Update()
     {
@@ -40,8 +41,10 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Player_Controller>().enabled = true;
             StartGame.SetActive(false);
             GameOver.SetActive(false);
+            Score.SetActive(false);
             destroyEnemiesAndTurrets();
             gracePeriod = 5f;
+            points = 0;
         }
         if(gameRunning){
             runGame();
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
             difficultyTimer = 0f;
             enemySpawnRate = 3.5f;
             GameOver.SetActive(true);
+            Score.SetActive(true);
+            Score.GetComponent<Text>().text = points.ToString();
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
             haltEnemiesAndTurrets();
