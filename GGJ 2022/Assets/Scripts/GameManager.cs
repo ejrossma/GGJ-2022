@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(playerHealth);
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
         GutsNum.text = guts.ToString();

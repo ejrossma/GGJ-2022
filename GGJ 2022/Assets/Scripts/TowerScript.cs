@@ -82,7 +82,6 @@ public class TowerScript : MonoBehaviour
 
         if (enemyList.Count > 0)
         {
-            print("Fire");
             //choose first character that is inside of the list in order to attack at
             GameObject currTarget = enemyList[0];
             GameObject currBullet = Instantiate(bullet, FiringPoint.position, Quaternion.identity);

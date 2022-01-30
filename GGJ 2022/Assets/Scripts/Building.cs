@@ -8,7 +8,6 @@ public class Building : MonoBehaviour
     public GameObject turret;
     private GameManager gm;
     private bool canBuild;
-    private bool canUpgrade;
 
     private void Start()
     {
@@ -22,11 +21,6 @@ public class Building : MonoBehaviour
         {
             buildTurret();
         }
-
-        if (canUpgrade)
-        {
-            
-        }
     }
 
     private void buildTurret()
@@ -35,23 +29,11 @@ public class Building : MonoBehaviour
         Instantiate(turret, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter2D(Collider2D col) 
-    {
-        if (col.tag == "TURRET")
-        {
-            canBuild = false;
-            canUpgrade = true;
-            Debug.Log("Can Upgrade Now");
-        }
-    }
-
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.tag == "TURRET")
         {
             canBuild = false;
-            canUpgrade = true;
-            Debug.Log("Can Upgrade Now");
         }
     }
 
@@ -60,8 +42,6 @@ public class Building : MonoBehaviour
         if (col.tag == "TURRET")
         {
             canBuild = true;
-            canUpgrade = false;
-            Debug.Log("Can Build Now");
         }
     }
     
