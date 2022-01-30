@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,12 +20,18 @@ public class Enemy : MonoBehaviour
     public Sprite explosion;
     public GameObject guts;
     public SpriteRenderer enemySprite;
+    public Image HealthBarR;
+    public Image HealthBarL;
+    public Canvas Healthbar;
+    private float totalHP;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        pathfind.maxSpeed = speed;       
+        pathfind.maxSpeed = speed;
+        Healthbar.worldCamera = Camera.main;
+        totalHP = hp;
     }
 
     // Update is called once per frame
@@ -34,9 +41,9 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Die());
             pathfind.maxSpeed = 0;
         }
+        HealthBarL.fillAmount = HealthBarR.fillAmount = hp/totalHP;
     }
     private void takeDamage(int Damage){
-        Debug.Log("Working");
         hp -= Damage;
     }
     private IEnumerator Die(){

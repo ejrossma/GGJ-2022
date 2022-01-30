@@ -460,7 +460,7 @@ MonoBehaviour:
   range: {fileID: 2709961964170899219}
   bullet: {fileID: 6756495199741683882, guid: 577e71c1038269f4f986a42c0cfdd2d7, type: 3}
   spriteCollection: []
-  Damage: 100
+  Damage: 10
   Barrel: {fileID: 5957848623594333806}
   FiringPoint: {fileID: 933077163132643878}
   BarrelRotateSpeed: 50
