@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public float difficulty; //base difficulty is 1
+    public float difficulty = 1f; //base difficulty is 1
     public Enemy_Spawner es;
     public float enemySpawnRate = 3f;
     private int enemyCluster;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Text MetalNum, GutsNum;
     private bool gameRunning = false;
     private bool deleteEnemies;
+    private float difficultyTimer = 0f;
 
     void Start()
     {
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
             runGame();
             spawnEnemies();
         }else if(!StartGame.activeInHierarchy){
+            difficulty = 1f;
+            difficultyTimer = 0f;
             GameOver.SetActive(true);
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
@@ -55,15 +58,29 @@ public class GameManager : MonoBehaviour
         if(enemySpawnWait <= 0){
             enemySpawnWait = enemySpawnRate;
             Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length + 1)].transform.position;
-            es.generateEnemy(spawnLocation);
+            enemyCluster = Random.Range(1,4);
+            for(int i = 0; 0 < enemyCluster; i++){
+                es.generateEnemy(spawnLocation);
+            }
         }else{
             enemySpawnWait -= Time.deltaTime;
+        }
+        if(playerHealth <= 0){
+            gameRunning = false;
         }
     }
     private void runGame(){
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
         GutsNum.text = guts.ToString();
+        //Difficulty Scaling
+        difficulty = Mathf.Clamp(difficulty, 1, 3);
+        if(difficultyTimer < 1f){
+            difficultyTimer += Time.deltaTime;
+        }else{
+            difficulty += 0.0033f;
+            difficultyTimer = 0f;
+        }
         //Spawn Enemies
     }
     private void haltEnemiesAndTurrets(){
