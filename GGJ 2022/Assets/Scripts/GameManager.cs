@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
 
     public int metal = 0;
     public int guts = 0;
-    public float playerHealth = 100;
+    public float playerHealth = 100f;
 
     public Text healthText;
     public bool playerIframes;
+    public Image HealthbarR, HealthbarL;
 
     void Start()
     {
@@ -26,9 +27,11 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(playerHealth);
+        HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
     }
 
-    public void takeDamage(int damage, Transform enemyTransform)
+    public void takeDamage(float damage, Transform enemyTransform)
     {
         FindObjectOfType<Player_Controller>().knockBack(enemyTransform);
         playerHealth -= damage;
