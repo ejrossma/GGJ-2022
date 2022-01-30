@@ -26,7 +26,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(hp <= 0){
+            //Die
+            Destroy(this.gameObject);
+        }
+    }
+    private void takeDamage(int Damage){
+        Debug.Log("Working");
+        hp -= Damage;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -35,6 +42,9 @@ public class Enemy : MonoBehaviour
         {
             gm.takeDamage(damage);
             Debug.Log("The Player took " + damage + " damage!");
+        }
+        if(col.gameObject.CompareTag("BULLET")){
+            takeDamage(col.gameObject.GetComponent<BulletScript>().Damage);
         }
     }
 }

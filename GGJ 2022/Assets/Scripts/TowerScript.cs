@@ -9,6 +9,7 @@ public class TowerScript : MonoBehaviour
     private CircleCollider2D rangeCollider;
     [SerializeField] private GameObject bullet;
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
+   [SerializeField]public int Damage = 100;
     
 
     private List<GameObject> enemyList = new List<GameObject>();
@@ -80,6 +81,7 @@ public class TowerScript : MonoBehaviour
             //choose first character that is inside of the list in order to attack at
             GameObject currTarget = enemyList[0];
             GameObject currBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+            currBullet.GetComponent<BulletScript>().Damage = this.Damage;
             //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
             currBullet.GetComponent<BulletScript>().direction = (currTarget.transform.position - transform.position).normalized; 
         }
