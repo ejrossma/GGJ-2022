@@ -7,6 +7,7 @@ TagManager:
   - Mineable
   - ENEMY
   - BULLET
+  - TURRET
   layers:
   - Default
   - TransparentFX
