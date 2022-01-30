@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public float difficulty = 1f; //base difficulty is 1
     public Enemy_Spawner es;
-    public float enemySpawnRate = 3f;
+    public float enemySpawnRate = 3.5f;
     private int enemyCluster;
     private float enemySpawnWait;
 
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         }else if(!StartGame.activeInHierarchy){
             difficulty = 1f;
             difficultyTimer = 0f;
+            enemySpawnRate = 3.5f;
             GameOver.SetActive(true);
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
@@ -75,11 +76,13 @@ public class GameManager : MonoBehaviour
         GutsNum.text = guts.ToString();
         //Difficulty Scaling
         difficulty = Mathf.Clamp(difficulty, 1, 3);
+        enemySpawnRate = Mathf.Clamp(enemySpawnRate, 1.5f, 3.5f);
         if(difficultyTimer < 1f){
             difficultyTimer += Time.deltaTime;
         }else{
             difficulty += 0.0033f;
             difficultyTimer = 0f;
+            enemySpawnRate -= 0.0033f;
         }
         //Spawn Enemies
     }
