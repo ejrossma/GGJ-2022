@@ -463,7 +463,7 @@ MonoBehaviour:
   Damage: 100
   Barrel: {fileID: 5957848623594333806}
   FiringPoint: {fileID: 0}
-  BarrelRotateSpeed: 20
+  BarrelRotateSpeed: 50
 --- !u!1 &2709961964170899219
 GameObject:
   m_ObjectHideFlags: 0
