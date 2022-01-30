@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public int hp;
     public float speed;
     public float damage;
+    public int score;
     
     public AIPath pathfind;
     private GameManager gm;
