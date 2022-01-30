@@ -84,8 +84,9 @@ public class GameManager : MonoBehaviour
             enemySpawnRate -= 0.0033f;
             difficultyTimer = 0f;
         }
-        if(difficulty >= 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
-        if(difficulty >= 3) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
+        if(difficulty >= 1 && difficulty < 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
+        if(difficulty >= 2 && difficulty < 3) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
+        if(difficulty >= 3 ) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
     }
     private void haltEnemiesAndTurrets(){
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("ENEMY");
