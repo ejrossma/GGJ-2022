@@ -28,10 +28,6 @@ public class BulletScript : MonoBehaviour
         if (other.gameObject.tag == "ENEMY")
         {
             //insert functionality here
-        }
-        if (other.gameObject.tag != "TURRET")
-        {
-            //IENUMERATOR for bullet explosion or particles
             Destroy(gameObject);
         }
     }
