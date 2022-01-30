@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private bool gameRunning = false;
     private bool deleteEnemies;
     private float difficultyTimer = 0f;
+    private float gracePeriod;
 
     void Start()
     {
@@ -40,10 +41,14 @@ public class GameManager : MonoBehaviour
             StartGame.SetActive(false);
             GameOver.SetActive(false);
             destroyEnemiesAndTurrets();
+            gracePeriod = 5f;
         }
         if(gameRunning){
             runGame();
-            spawnEnemies();
+            if(gracePeriod <=0)
+                spawnEnemies();
+            else
+                gracePeriod -= Time.deltaTime;
         }else if(!StartGame.activeInHierarchy){
             difficulty = 1f;
             difficultyTimer = 0f;
