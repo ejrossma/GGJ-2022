@@ -76,11 +76,13 @@ public class Upgrade : MonoBehaviour
     {
         selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
         selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+        //activate hammer
     }
 
     private void hideUpgrades()
     {
         selectedTurret.transform.GetChild(1).gameObject.SetActive(false);
+        //deactivate hammer
     }
 
     //handle the selection of new turret and deselection of old one
