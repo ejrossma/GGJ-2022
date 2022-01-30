@@ -54,22 +54,6 @@ public class GameManager : MonoBehaviour
             haltEnemiesAndTurrets();
         }
     }
-
-    private void spawnEnemies(){
-        if(enemySpawnWait <= 0){
-            enemySpawnWait = enemySpawnRate;
-            Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length + 1)].transform.position;
-            enemyCluster = Random.Range(1,5);
-            for(int i = 0; 0 < enemyCluster; i++){
-                es.generateEnemy(spawnLocation);
-            }
-        }else{
-            enemySpawnWait -= Time.deltaTime;
-        }
-        if(playerHealth <= 0){
-            gameRunning = false;
-        }
-    }
     private void runGame(){
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
@@ -84,9 +68,24 @@ public class GameManager : MonoBehaviour
             enemySpawnRate -= 0.0033f;
             difficultyTimer = 0f;
         }
-        if(difficulty >= 1 && difficulty < 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
-        if(difficulty >= 2 && difficulty < 3) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
-        if(difficulty >= 3 ) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
+        if(playerHealth <= 0){
+            gameRunning = false;
+        }
+    }
+    private void spawnEnemies(){
+        if(enemySpawnWait <= 0){
+            enemySpawnWait = enemySpawnRate;
+            Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform.position;
+            enemyCluster = Random.Range(1,5);
+            if(difficulty >= 1 && difficulty < 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 2);
+            if(difficulty >= 2 && difficulty < 3) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
+            if(difficulty >= 3 ) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
+            for(int i = 0; i < enemyCluster; i++){
+                es.generateEnemy(spawnLocation);
+            }
+        }else{
+            enemySpawnWait -= Time.deltaTime;
+        }
     }
     private void haltEnemiesAndTurrets(){
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("ENEMY");
