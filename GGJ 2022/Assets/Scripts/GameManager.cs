@@ -15,18 +15,37 @@ public class GameManager : MonoBehaviour
 
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
+    public GameObject StartGame, GameOver;
     public Text MetalNum, GutsNum;
+    private bool gameRunning = false;
 
     void Start()
     {
-        for (int i = 0; i < 20; i+=2)
-        {
-            es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
-        }
+        //for (int i = 0; i < 20; i+=2)
+        //{
+            //es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
+        //}
+        FindObjectOfType<Player_Controller>().enabled = false;
+        StartGame.SetActive(true);
+        GameOver.SetActive(false);
     }
     void Update()
     {
-        Debug.Log(playerHealth);
+        if(Input.GetKeyDown(KeyCode.Space) && !gameRunning){
+            gameRunning = true;
+            FindObjectOfType<Player_Controller>().enabled = true;
+            StartGame.SetActive(false);
+        }
+        if(gameRunning)
+            runGame();
+        else if(!StartGame.activeInHierarchy){
+            GameOver.SetActive(true);
+            FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
+            FindObjectOfType<Player_Controller>().enabled = false;
+        }
+    }
+
+    private void runGame(){
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
         GutsNum.text = guts.ToString();
