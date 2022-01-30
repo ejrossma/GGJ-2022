@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //for (int i = 0; i < 20; i+=2)
-        //{
-            //es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
-        //}
+        for (int i = 0; i < 20; i+=2)
+        {
+            es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
+        }
         FindObjectOfType<Player_Controller>().enabled = false;
         StartGame.SetActive(true);
         GameOver.SetActive(false);
