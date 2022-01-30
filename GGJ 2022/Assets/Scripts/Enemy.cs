@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator Die(){
         dying = true;
         GetComponent<Collider2D>().enabled = false;
+        gm.points += score;
         if(Random.Range(0.0f, 1.0f)  >= 0.6f)
             Instantiate(guts, this.transform.position, Quaternion.identity);
         enemySprite.sprite = explosion;

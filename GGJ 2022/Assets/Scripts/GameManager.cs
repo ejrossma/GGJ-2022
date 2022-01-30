@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Player_Controller>().enabled = false;
             haltEnemiesAndTurrets();
         }
+
+        
     }
 
     private void runGame(){
