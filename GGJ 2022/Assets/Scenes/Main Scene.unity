@@ -13691,7 +13691,7 @@ Transform:
   - {fileID: 150611662}
   - {fileID: 1345567048}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251063260
 GameObject:
@@ -14319,7 +14319,7 @@ Transform:
   m_LocalScale: {x: 0.36927778, y: 0.36927778, z: 0.36927778}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &477684255
 GameObject:
@@ -14462,7 +14462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &562839596
 GameObject:
@@ -14495,6 +14495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 1
   es: {fileID: 1253323291}
+  enemySpawnRate: 3
   metal: 0
   guts: 0
   playerHealth: 100
@@ -14504,6 +14505,13 @@ MonoBehaviour:
   HealthbarL: {fileID: 1146566894}
   StartGame: {fileID: 1640289941}
   GameOver: {fileID: 343404036}
+  SpawnPoints:
+  - {fileID: 386316406}
+  - {fileID: 1493936837}
+  - {fileID: 671805433}
+  - {fileID: 992822783}
+  - {fileID: 1974083140}
+  - {fileID: 679686468}
   MetalNum: {fileID: 1442587239}
   GutsNum: {fileID: 1639062306}
 --- !u!4 &562839598
@@ -14942,7 +14950,7 @@ Transform:
   - {fileID: 1974083141}
   - {fileID: 679686469}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1121356182
 PrefabInstance:
@@ -25048,7 +25056,7 @@ RectTransform:
   - {fileID: 1640289942}
   - {fileID: 343404037}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

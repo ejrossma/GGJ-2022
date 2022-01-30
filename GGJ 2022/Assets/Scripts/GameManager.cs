@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public float difficulty; //base difficulty is 1
+    public float difficulty = 1f; //base difficulty is 1
     public Enemy_Spawner es;
+    public float enemySpawnRate = 3.5f;
+    private int enemyCluster;
+    private float enemySpawnWait;
 
     public int metal = 0;
     public int guts = 0;
@@ -17,16 +20,14 @@ public class GameManager : MonoBehaviour
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
     public GameObject StartGame, GameOver;
+    public GameObject[] SpawnPoints;
     public Text MetalNum, GutsNum;
     private bool gameRunning = false;
     private bool deleteEnemies;
+    private float difficultyTimer = 0f;
 
     void Start()
     {
-        for (int i = 0; i < 20; i+=2)
-        {
-            es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
-        }
         FindObjectOfType<Player_Controller>().enabled = false;
         StartGame.SetActive(true);
         GameOver.SetActive(false);
@@ -40,9 +41,13 @@ public class GameManager : MonoBehaviour
             GameOver.SetActive(false);
             destroyEnemiesAndTurrets();
         }
-        if(gameRunning)
+        if(gameRunning){
             runGame();
-        else if(!StartGame.activeInHierarchy){
+            spawnEnemies();
+        }else if(!StartGame.activeInHierarchy){
+            difficulty = 1f;
+            difficultyTimer = 0f;
+            enemySpawnRate = 3.5f;
             GameOver.SetActive(true);
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
@@ -51,12 +56,38 @@ public class GameManager : MonoBehaviour
 
         
     }
-
     private void runGame(){
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
         MetalNum.text = metal.ToString();
         GutsNum.text = guts.ToString();
-        //Spawn Enemies
+        //Difficulty Scaling
+        difficulty = Mathf.Clamp(difficulty, 1, 3);
+        enemySpawnRate = Mathf.Clamp(enemySpawnRate, 1.5f, 3.5f);
+        if(difficultyTimer < 1f){
+            difficultyTimer += Time.deltaTime;
+        }else{
+            difficulty += 0.0033f;
+            enemySpawnRate -= 0.0033f;
+            difficultyTimer = 0f;
+        }
+        if(playerHealth <= 0){
+            gameRunning = false;
+        }
+    }
+    private void spawnEnemies(){
+        if(enemySpawnWait <= 0){
+            enemySpawnWait = enemySpawnRate;
+            Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform.position;
+            enemyCluster = Random.Range(1,5);
+            if(difficulty >= 1 && difficulty < 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 2);
+            if(difficulty >= 2 && difficulty < 3) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
+            if(difficulty >= 3 ) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
+            for(int i = 0; i < enemyCluster; i++){
+                es.generateEnemy(spawnLocation);
+            }
+        }else{
+            enemySpawnWait -= Time.deltaTime;
+        }
     }
     private void haltEnemiesAndTurrets(){
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("ENEMY");
