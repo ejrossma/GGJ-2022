@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
+    public Text MetalNum, GutsNum;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log(playerHealth);
         HealthbarR.fillAmount = HealthbarL.fillAmount = playerHealth / 100f;
+        MetalNum.text = metal.ToString();
+        GutsNum.text = guts.ToString();
     }
 
     public void takeDamage(float damage, Transform enemyTransform)
