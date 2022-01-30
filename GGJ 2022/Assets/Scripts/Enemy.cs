@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private GameManager gm;
 
     private GameObject player;
+    public GameObject guts;
 
     void Start()
     {
@@ -28,14 +29,18 @@ public class Enemy : MonoBehaviour
     {
         if(hp <= 0){
             //Die
-            Destroy(this.gameObject);
+            Die();
         }
     }
     private void takeDamage(int Damage){
         Debug.Log("Working");
         hp -= Damage;
     }
-
+    private void Die(){
+        if(Random.Range(0.0f, 1.0f)  >= 0.6f)
+            Instantiate(guts, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.name == "Player_Collider")

@@ -134,6 +134,7 @@ MonoBehaviour:
   speed: 0
   damage: 0
   pathfind: {fileID: 4154778784186626499}
+  guts: {fileID: 6188692170901084403, guid: 77267ad752f7141aaa1f9230845f50d6, type: 3}
 --- !u!114 &3286416707738317078
 MonoBehaviour:
   m_ObjectHideFlags: 0
