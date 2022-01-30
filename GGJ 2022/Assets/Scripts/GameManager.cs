@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
     public GameObject StartGame, GameOver;
+    public GameObject[] SpawnPoints;
     public Text MetalNum, GutsNum;
     private bool gameRunning = false;
     private bool deleteEnemies;
@@ -53,7 +54,8 @@ public class GameManager : MonoBehaviour
     private void spawnEnemies(){
         if(enemySpawnWait <= 0){
             enemySpawnWait = enemySpawnRate;
-            es.generateEnemy(new Vector3(0.0f, 0.0f, 0.0f));
+            Vector3 spawnLocation = SpawnPoints[Random.Range(0, SpawnPoints.Length + 1)].transform.position;
+            es.generateEnemy(spawnLocation);
         }else{
             enemySpawnWait -= Time.deltaTime;
         }
