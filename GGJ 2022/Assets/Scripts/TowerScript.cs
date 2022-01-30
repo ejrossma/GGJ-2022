@@ -11,9 +11,11 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
     [SerializeField] public int Damage = 100;
     [SerializeField] public GameObject Barrel;
+    [SerializeField] private float BarrelRotateSpeed = 20f;
     
 
     private List<GameObject> enemyList = new List<GameObject>();
+    private Vector3 BarrelDirection;
 
     private string towerType = "base";
     private float fireRate = 0.25f;
@@ -55,13 +57,14 @@ public class TowerScript : MonoBehaviour
     void Start()
     {
         CircleCollider2D rangeCollider = range.GetComponent<CircleCollider2D>();
-
+        BarrelDirection = Barrel.transform.up;
 
     }
 
     void Update()
     {
-        
+        Barrel.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
+        Barrel.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
         timeUntilFire -= Time.deltaTime;
         if (timeUntilFire <= 0)
         {
@@ -84,7 +87,7 @@ public class TowerScript : MonoBehaviour
             GameObject currBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
             currBullet.GetComponent<BulletScript>().Damage = this.Damage;
             //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
-            currBullet.GetComponent<BulletScript>().direction = (currTarget.transform.position - transform.position).normalized; 
+            currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
         }
     }
     public void enemyEnteredArea(Collider2D enemy)
