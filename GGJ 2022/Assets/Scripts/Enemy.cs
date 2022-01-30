@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     //lesser size = less hp & more speed
     public int hp;
     public float speed;
-    public int damage;
+    public float damage;
     
     public AIPath pathfind;
     private GameManager gm;
