@@ -5,9 +5,13 @@ using UnityEngine;
 public class Mining : MonoBehaviour
 {
     public float MiningRate = 1f;
+    public GameObject Pickaxe;
     private bool canMine = false;
     private float nextMetalMined = 0;
     private bool isMining = false;
+    private void Start() {
+        Pickaxe.SetActive(false);
+    }
     private void Update() {
         if(Input.GetKey(KeyCode.Mouse0))
             isMining = true;
@@ -16,9 +20,12 @@ public class Mining : MonoBehaviour
 
         if(canMine && isMining){
             Mine();
+        }else{
+            Pickaxe.SetActive(false);
         }
     }
     private void Mine(){
+        Pickaxe.SetActive(true);
         nextMetalMined += Time.deltaTime;
         if(nextMetalMined >= MiningRate){
             nextMetalMined = 0;

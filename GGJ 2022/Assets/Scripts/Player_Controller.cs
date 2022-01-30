@@ -13,9 +13,11 @@ public class Player_Controller : MonoBehaviour
     private Vector2 inputVector;
     private Rigidbody2D playerRB;
     private bool knockedBack = false;
+    private SpriteRenderer playerSR;
     
     private void Start() {
         playerRB = GetComponent<Rigidbody2D>();
+        playerSR = GetComponent<SpriteRenderer>();
     }
     private void Update() {
         if(!knockedBack)
@@ -32,6 +34,11 @@ public class Player_Controller : MonoBehaviour
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         inputVector = new Vector2(inputX, inputY).normalized;
+        if(inputX < 0){
+            playerSR.flipX = false;
+        }else if(inputX > 0){
+            playerSR.flipX = true;
+        }
     }
     private void Movement(){
         float speed = playerSpeed;
