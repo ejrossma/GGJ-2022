@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public int guts = 0;
     public float playerHealth = 100f;
 
-    public Text healthText;
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
 
@@ -23,7 +22,6 @@ public class GameManager : MonoBehaviour
         {
             es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
         }
-        //healthText.text = "Health: " + playerHealth;
     }
     void Update()
     {
@@ -35,7 +33,6 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<Player_Controller>().knockBack(enemyTransform);
         playerHealth -= damage;
-        //healthText.text = "Health: " + playerHealth;
         playerIframes = true;
         StartCoroutine(takeIframesAway());
 
