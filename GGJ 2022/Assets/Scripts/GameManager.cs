@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
             difficultyTimer += Time.deltaTime;
         }else{
             difficulty += 0.0033f;
-            difficultyTimer = 0f;
             enemySpawnRate -= 0.0033f;
+            difficultyTimer = 0f;
         }
         if(difficulty >= 2) enemyCluster = Mathf.Clamp(enemyCluster, 1, 3);
         if(difficulty >= 3) enemyCluster = Mathf.Clamp(enemyCluster, 2, 4);
