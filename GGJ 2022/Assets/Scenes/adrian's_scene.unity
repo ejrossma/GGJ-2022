@@ -158,7 +158,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 6}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 6, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -262,10 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
-  es: {fileID: 0}
   metal: 0
   guts: 0
   playerHealth: 100
+  healthText: {fileID: 0}
 --- !u!4 &775036462
 Transform:
   m_ObjectHideFlags: 0
@@ -420,3 +420,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0df1824562671e48b3b3037d80e26c0, type: 3}
+--- !u!1 &3129043564851629120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3129043564219404261, guid: a0df1824562671e48b3b3037d80e26c0, type: 3}
+  m_PrefabInstance: {fileID: 3129043564851629119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3129043564851629121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129043564851629120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a26824f284cd440a9d35de5d22aa53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MiningRate: 1
