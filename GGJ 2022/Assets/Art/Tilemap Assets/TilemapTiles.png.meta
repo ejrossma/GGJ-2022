@@ -4,31 +4,31 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7142846841671382370
-    second: aboveWall_0
+    second: TilemapTiles_0
   - first:
       213: -6363618533205089300
-    second: aboveWall_1
+    second: TilemapTiles_1
   - first:
       213: 2512329133880749671
-    second: belowWall_0
+    second: TilemapTiles_2
   - first:
       213: 5102481880226187680
-    second: belowWall_1
+    second: TilemapTiles_3
   - first:
       213: -1530655531662329527
-    second: ground_0
+    second: TilemapTiles_4
   - first:
       213: -6489480098729445695
-    second: ground_1
+    second: TilemapTiles_5
   - first:
       213: -311042505457216605
-    second: aboveWall_2
+    second: TilemapTiles_6
   - first:
       213: -6759022911021825555
-    second: belowWall_2
+    second: TilemapTiles_7
   - first:
       213: 978917277738756198
-    second: ground_2
+    second: TilemapTiles_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,7 +130,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aboveWall_0
+      name: TilemapTiles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -151,7 +151,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aboveWall_1
+      name: TilemapTiles_1
       rect:
         serializedVersion: 2
         x: 32
@@ -172,7 +172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: belowWall_0
+      name: TilemapTiles_2
       rect:
         serializedVersion: 2
         x: 64
@@ -193,7 +193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: belowWall_1
+      name: TilemapTiles_3
       rect:
         serializedVersion: 2
         x: 96
@@ -214,7 +214,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground_0
+      name: TilemapTiles_4
       rect:
         serializedVersion: 2
         x: 128
@@ -235,7 +235,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground_1
+      name: TilemapTiles_5
       rect:
         serializedVersion: 2
         x: 160
@@ -256,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aboveWall_2
+      name: TilemapTiles_6
       rect:
         serializedVersion: 2
         x: 0
@@ -277,7 +277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: belowWall_2
+      name: TilemapTiles_7
       rect:
         serializedVersion: 2
         x: 64
@@ -298,7 +298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground_2
+      name: TilemapTiles_8
       rect:
         serializedVersion: 2
         x: 128
