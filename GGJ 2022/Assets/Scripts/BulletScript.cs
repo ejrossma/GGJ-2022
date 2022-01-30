@@ -6,8 +6,8 @@ public class BulletScript : MonoBehaviour
 {
 
     [SerializeField] float moveBy = 10f;
+     [SerializeField] float timer = 1f;
     public Vector3 direction = new Vector3(0,1,0);
-    private float timer = 2.5f;
     public int Damage;
     // Start is called before the first frame update
     void Start()
