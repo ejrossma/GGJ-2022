@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public float difficulty; //base difficulty is 1
-    private Enemy_Spawner es;
+    public Enemy_Spawner es;
 
     public int metal = 0;
     public int guts = 0;
@@ -18,13 +18,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        es = FindObjectOfType<Enemy_Spawner>();
-
         for (int i = 0; i < 20; i+=2)
         {
             es.generateEnemy(new Vector3(-10.0f + i, 0.0f, 0.0f));
         }
-        healthText.text = "Health: " + playerHealth;
+        //healthText.text = "Health: " + playerHealth;
     }
     void Update()
     {
@@ -34,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<Player_Controller>().knockBack(enemyTransform);
         playerHealth -= damage;
-        healthText.text = "Health: " + playerHealth;
+        //healthText.text = "Health: " + playerHealth;
         playerIframes = true;
         StartCoroutine(takeIframesAway());
 

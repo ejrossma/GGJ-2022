@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         pathfind.maxSpeed = speed;
         Healthbar.worldCamera = Camera.main;
         totalHP = hp;
