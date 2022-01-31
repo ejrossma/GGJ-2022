@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape)) Application.Quit();
         if(Input.GetKeyDown(KeyCode.Space) && !gameRunning){
             BGM.Play();
             gameRunning = true;
