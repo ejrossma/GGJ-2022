@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
     private float knockBackTimeElapsed = 0;
     private float inputX;
     private float inputY;
-    private Vector2 inputVector;
+    public Vector2 inputVector;
     private Rigidbody2D playerRB;
     private bool knockedBack = false;
     private SpriteRenderer playerSR;
