@@ -49,16 +49,27 @@ public class Upgrade : MonoBehaviour
             upgrading = true;
             showUpgrades();
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && turretSelected && canUpgrade && upgrading) //metal upgrade
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && turretSelected && canUpgrade && upgrading && gm.metal >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded != true) //metal upgrade
         {
             //do metal upgrade
+            selectedTurret.GetComponent<TowerScript>().upgradeToMetal();
+            showUpgrades();
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && turretSelected && canUpgrade && upgrading) //alien upgrade
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && turretSelected && canUpgrade && upgrading && gm.guts >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded != true) //alien upgrade
         {
             //do alien upgrade
+            selectedTurret.GetComponent<TowerScript>().upgradeToAlien();
+            showUpgrades();
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && turretSelected && canUpgrade && upgrading && gm.metal >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded == true)
+        {
+            selectedTurret.GetComponent<TowerScript>().upgradeMechTurret();
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && turretSelected && canUpgrade && upgrading && gm.guts >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded == true)
+        {
+            selectedTurret.GetComponent<TowerScript>().upgradeAlienTurret();
         }
     }
-
     //show two upgrade paths
         //alien
             //icon will be resource
@@ -74,15 +85,55 @@ public class Upgrade : MonoBehaviour
             //increased fire rate
     private void showUpgrades()
     {
-        selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
-        selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
-        //activate hammer
+        if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "alien")
+        {
+            //show upgrades + text
+            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+
+            //hide mech upgrades
+            selectedTurret.GetComponent<TowerScript>().metalCost.enabled = false;
+            //hide metal icon
+            selectedTurret.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
+
+            //hide mouse indicator
+            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+
+            //show hammer
+            transform.parent.GetChild(3).gameObject.SetActive(true);
+
+        }
+        else if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "mech")
+        {
+            //show upgrades + text
+            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+
+            //hide alien cost
+            selectedTurret.GetComponent<TowerScript>().gutsCost.enabled = false;
+            //hide guts icon
+            selectedTurret.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+
+            //hide mouse indicator
+            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+
+            //show hammer
+            transform.parent.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+        {
+            //show upgrades
+            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+            //hide mouse indicator
+            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+            //show hammer
+            transform.parent.GetChild(3).gameObject.SetActive(true);
+        }
     }
 
     private void hideUpgrades()
     {
         selectedTurret.transform.GetChild(1).gameObject.SetActive(false);
-        //deactivate hammer
+        //hide hammer
+        transform.parent.GetChild(3).gameObject.SetActive(false);
     }
 
     //handle the selection of new turret and deselection of old one
@@ -120,7 +171,8 @@ public class Upgrade : MonoBehaviour
     {
         if (col.tag == "TURRET")
         {
-            turretsInRange.Add(col.gameObject);
+            if (col.gameObject.GetComponent<TowerScript>().upgraded == false)
+                turretsInRange.Add(col.gameObject);
         }
     }
 
@@ -128,7 +180,8 @@ public class Upgrade : MonoBehaviour
     {
         if (col.tag == "TURRET")
         {
-            turretsInRange.Remove(col.gameObject);
+            if (col.gameObject.GetComponent<TowerScript>().upgraded == false)
+                turretsInRange.Remove(col.gameObject);
         }
     }
 }

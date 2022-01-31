@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class TowerScript : MonoBehaviour
     [SerializeField] public GameObject Barrel;
     [SerializeField] Transform FiringPoint;
     [SerializeField] private float BarrelRotateSpeed = 20f;
+
+    private GameManager gm;
     
 
     private List<GameObject> enemyList = new List<GameObject>();
@@ -21,6 +24,11 @@ public class TowerScript : MonoBehaviour
     private string towerType = "base";
     private float fireRate = 0.25f;
     private float timeUntilFire = 0.25f;
+
+    public bool upgraded;
+
+    public Text metalCost;
+    public Text gutsCost;
 
 
     //ALIEN TOWER
@@ -37,7 +45,7 @@ public class TowerScript : MonoBehaviour
         //INCREASED FIRE RATE
 
 
-    void updateTowerType(string type)
+    public void updateTowerType(string type)
     {
         towerType = type;
         switch (towerType)
@@ -49,7 +57,11 @@ public class TowerScript : MonoBehaviour
                 //modify stats here
                 break;
         }
+    }
 
+    public string getTowerType()
+    {
+        return towerType;
     }
 
 
@@ -59,7 +71,7 @@ public class TowerScript : MonoBehaviour
     {
         CircleCollider2D rangeCollider = range.GetComponent<CircleCollider2D>();
         BarrelDirection = Barrel.transform.up;
-
+        GameObject.Find("Game_Manager");
     }
 
     void Update()
@@ -74,7 +86,40 @@ public class TowerScript : MonoBehaviour
         }
     }
 
+    public void upgradeToAlien()
+    {
+        //remove normal tower visual
+        transform.GetChild(3).gameObject.SetActive(false);
+        //add new tower visual
+        transform.GetChild(4).gameObject.SetActive(true);
+        //change type of tower
+        updateTowerType("alien");
+        //spend resources
+        gm.guts -= 5;
+    }
 
+    public void upgradeToMetal()
+    {
+        //remove normal tower visual
+        transform.GetChild(3).gameObject.SetActive(false);
+        //add new tower visual
+        transform.GetChild(5).gameObject.SetActive(true);
+        //change type of tower
+        updateTowerType("mech");
+
+        //spend resources
+        gm.metal -= 5;
+    }
+
+    public void upgradeAlienTurret()
+    {
+
+    }
+
+    public void upgradeMechTurret()
+    {
+
+    }
 
     private void fire()
     {
