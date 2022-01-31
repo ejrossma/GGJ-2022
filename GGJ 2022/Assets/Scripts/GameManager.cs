@@ -19,36 +19,51 @@ public class GameManager : MonoBehaviour
 
     public bool playerIframes;
     public Image HealthbarR, HealthbarL;
-    public GameObject StartGame, GameOver;
+    public GameObject StartGame, GameOver, Score;
     public GameObject[] SpawnPoints;
     public Text MetalNum, GutsNum;
     private bool gameRunning = false;
     private bool deleteEnemies;
     private float difficultyTimer = 0f;
+    private float gracePeriod;
+    private AudioSource BGM;
 
     void Start()
     {
         FindObjectOfType<Player_Controller>().enabled = false;
         StartGame.SetActive(true);
         GameOver.SetActive(false);
+        Score.SetActive(false);
+        BGM = GetComponent<AudioSource>();
     }
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape)) Application.Quit();
         if(Input.GetKeyDown(KeyCode.Space) && !gameRunning){
+            BGM.Play();
             gameRunning = true;
             FindObjectOfType<Player_Controller>().enabled = true;
             StartGame.SetActive(false);
             GameOver.SetActive(false);
+            Score.SetActive(false);
             destroyEnemiesAndTurrets();
+            gracePeriod = 5f;
+            points = 0;
         }
         if(gameRunning){
             runGame();
-            spawnEnemies();
+            if(gracePeriod <=0)
+                spawnEnemies();
+            else
+                gracePeriod -= Time.deltaTime;
         }else if(!StartGame.activeInHierarchy){
+            BGM.Stop();
             difficulty = 1f;
             difficultyTimer = 0f;
             enemySpawnRate = 3.5f;
             GameOver.SetActive(true);
+            Score.SetActive(true);
+            Score.GetComponent<Text>().text = points.ToString();
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
             haltEnemiesAndTurrets();
