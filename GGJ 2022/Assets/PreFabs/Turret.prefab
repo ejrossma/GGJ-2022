@@ -547,7 +547,10 @@ MonoBehaviour:
   spriteCollection: []
   Damage: 10
   Barrel: {fileID: 5957848623594333806}
+  BarrelTwo: {fileID: 4339980133595489389}
   FiringPoint: {fileID: 933077163132643878}
+  FiringPointOne: {fileID: 4641433749099750566}
+  FiringPointTwo: {fileID: 4924570682950267269}
   BarrelRotateSpeed: 60
   upgraded: 0
   metalCost: {fileID: 3291171724405472335}
