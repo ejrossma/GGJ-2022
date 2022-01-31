@@ -81,7 +81,7 @@ public class TowerScript : MonoBehaviour
     {
         if(towerType == "base"){
             Barrel.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
-            Barrel.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
+            //Barrel.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
             timeUntilFire -= Time.deltaTime;
             if (timeUntilFire <= 0)
             {
@@ -90,8 +90,8 @@ public class TowerScript : MonoBehaviour
             }
         }
         if(towerType == "mech"){
-            BarrelTwo.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
-            BarrelTwo.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
+            BarrelTwo.transform.up = Vector3.Lerp(BarrelTwo.transform.up, -BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
+            //BarrelTwo.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
             timeUntilFire -= Time.deltaTime;
             if (timeUntilFire <= 0)
             {
