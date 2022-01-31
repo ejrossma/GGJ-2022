@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
             destroyEnemiesAndTurrets();
             gracePeriod = 5f;
             points = 0;
+            playerHealth = 100f;
         }
         if(gameRunning){
             runGame();
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
             Score.GetComponent<Text>().text = points.ToString();
             FindObjectOfType<Player_Controller>().gameObject.transform.position = new Vector2(0f,0f);
             FindObjectOfType<Player_Controller>().enabled = false;
-            haltEnemiesAndTurrets();
+            destroyEnemiesAndTurrets();
         }
 
         
@@ -102,16 +103,6 @@ public class GameManager : MonoBehaviour
             }
         }else{
             enemySpawnWait -= Time.deltaTime;
-        }
-    }
-    private void haltEnemiesAndTurrets(){
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("ENEMY");
-        foreach(GameObject enemy in allEnemies){
-            enemy.GetComponent<Enemy>().enabled = false;
-        }
-        GameObject[] allTurrets = GameObject.FindGameObjectsWithTag("TURRET");
-        foreach(GameObject turret in allTurrets){
-            turret.GetComponent<TowerScript>().enabled = false;
         }
     }
     private void destroyEnemiesAndTurrets(){
