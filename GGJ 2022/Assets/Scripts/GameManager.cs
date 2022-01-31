@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private bool deleteEnemies;
     private float difficultyTimer = 0f;
     private float gracePeriod;
+    private AudioSource BGM;
 
     void Start()
     {
@@ -33,10 +34,12 @@ public class GameManager : MonoBehaviour
         StartGame.SetActive(true);
         GameOver.SetActive(false);
         Score.SetActive(false);
+        BGM = GetComponent<AudioSource>();
     }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && !gameRunning){
+            BGM.Play();
             gameRunning = true;
             FindObjectOfType<Player_Controller>().enabled = true;
             StartGame.SetActive(false);
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
             else
                 gracePeriod -= Time.deltaTime;
         }else if(!StartGame.activeInHierarchy){
+            BGM.Stop();
             difficulty = 1f;
             difficultyTimer = 0f;
             enemySpawnRate = 3.5f;
