@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject StartGame, GameOver, Score;
     public GameObject[] SpawnPoints;
     public Text MetalNum, GutsNum;
-    private bool gameRunning = false;
+    public bool gameRunning = false;
     private bool deleteEnemies;
     private float difficultyTimer = 0f;
     private float gracePeriod;
