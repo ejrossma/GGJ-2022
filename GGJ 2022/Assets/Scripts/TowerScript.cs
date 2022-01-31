@@ -28,8 +28,8 @@ public class TowerScript : MonoBehaviour
     private float fireRate = 0.25f;
     private float timeUntilFire = 0.25f;
 
-    private float slowRate = 0.75f;
-    private float unfreezeRate = 1.33f;
+    private float slowRate = 0.6f;
+    private float unfreezeRate = 1.66f;
 
     public bool upgraded;
     public bool fullyUpgraded;
@@ -145,6 +145,7 @@ public class TowerScript : MonoBehaviour
 
     public void upgradeAlienTurret()
     {
+        gm.guts -= 5;
         fullyUpgraded = true;
         //hide upgrade menu
         transform.GetChild(1).gameObject.SetActive(false);
@@ -152,6 +153,7 @@ public class TowerScript : MonoBehaviour
 
     public void upgradeMechTurret()
     {
+        gm.metal -= 5;
         fullyUpgraded = true;
         transform.GetChild(1).gameObject.SetActive(false);
         //hide upgrade menu

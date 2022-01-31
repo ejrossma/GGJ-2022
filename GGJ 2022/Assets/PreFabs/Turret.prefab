@@ -545,7 +545,7 @@ MonoBehaviour:
   range: {fileID: 2709961964170899219}
   bullet: {fileID: 6756495199741683882, guid: 577e71c1038269f4f986a42c0cfdd2d7, type: 3}
   spriteCollection: []
-  Damage: 10
+  Damage: 8
   Barrel: {fileID: 5957848623594333806}
   BarrelTwo: {fileID: 4339980133595489389}
   FiringPoint: {fileID: 933077163132643878}
@@ -553,6 +553,7 @@ MonoBehaviour:
   FiringPointTwo: {fileID: 4924570682950267269}
   BarrelRotateSpeed: 60
   upgraded: 0
+  fullyUpgraded: 0
   metalCost: {fileID: 3291171724405472335}
   gutsCost: {fileID: 7052665759460321524}
 --- !u!61 &8439012535460800551
