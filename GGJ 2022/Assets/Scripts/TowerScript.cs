@@ -81,6 +81,8 @@ public class TowerScript : MonoBehaviour
         CircleCollider2D rangeCollider = range.GetComponent<CircleCollider2D>();
         BarrelDirection = Barrel.transform.up;
         gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
+        upgraded = false;
+        fullyUpgraded = false;
     }
 
     void Update()
@@ -104,7 +106,7 @@ public class TowerScript : MonoBehaviour
                 Doublefire();
                 timeUntilFire = fireRate;
                 if(fullyUpgraded){
-                    timeUntilFire = fireRate/2f;
+                    timeUntilFire = fireRate/1.5f;
                 }
             }
         }
