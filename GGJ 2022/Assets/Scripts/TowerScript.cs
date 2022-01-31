@@ -12,6 +12,8 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
     [SerializeField] public int Damage = 100;
     [SerializeField] public GameObject Barrel;
+    [SerializeField] public GameObject BarrelOne;
+    [SerializeField] public GameObject BarrelTwo;
     [SerializeField] Transform FiringPoint;
     [SerializeField] private float BarrelRotateSpeed = 20f;
 
@@ -76,13 +78,21 @@ public class TowerScript : MonoBehaviour
 
     void Update()
     {
-        Barrel.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
-        Barrel.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
-        timeUntilFire -= Time.deltaTime;
-        if (timeUntilFire <= 0)
-        {
-            fire();
-            timeUntilFire = fireRate;
+        if(towerType == "base"){
+            Barrel.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
+            Barrel.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
+            timeUntilFire -= Time.deltaTime;
+            if (timeUntilFire <= 0)
+            {
+                fire();
+                timeUntilFire = fireRate;
+            }
+        }
+        if(towerType == "mech"){
+
+        }
+        if(towerType == "alie"){
+
         }
     }
 
@@ -118,7 +128,14 @@ public class TowerScript : MonoBehaviour
 
     public void upgradeMechTurret()
     {
-
+         if (enemyList.Count > 0)
+        {
+            //choose first character that is inside of the list in order to attack at
+            GameObject currTarget = enemyList[0];
+            GameObject currBullet = Instantiate(bullet, FiringPoint.position, Quaternion.identity);
+            currBullet.GetComponent<BulletScript>().Damage = this.Damage;
+            currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
+        }
     }
 
     private void fire()
@@ -131,7 +148,6 @@ public class TowerScript : MonoBehaviour
             GameObject currTarget = enemyList[0];
             GameObject currBullet = Instantiate(bullet, FiringPoint.position, Quaternion.identity);
             currBullet.GetComponent<BulletScript>().Damage = this.Damage;
-            //currBullet.transform.LookAt(currTarget.GetComponent<Transform>());
             currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
         }
     }
