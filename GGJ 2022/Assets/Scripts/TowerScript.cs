@@ -101,6 +101,9 @@ public class TowerScript : MonoBehaviour
             {
                 Doublefire();
                 timeUntilFire = fireRate;
+                if(fullyUpgraded){
+                    timeUntilFire = fireRate/2f;
+                }
             }
         }
         if(towerType == "alien"){
