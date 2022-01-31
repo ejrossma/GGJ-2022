@@ -9,6 +9,8 @@ public class Building : MonoBehaviour
     private GameManager gm;
     private bool canBuild;
 
+    public GameObject indicator;
+
     private void Start()
     {
         gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
@@ -17,6 +19,14 @@ public class Building : MonoBehaviour
 
     private void Update() 
     {
+        if (canBuild && gm.metal >= 5)
+        {
+            indicator.SetActive(true);
+        }
+        else
+        {
+            indicator.SetActive(false);
+        }
         if (Input.GetKeyDown(KeyCode.Mouse1) && canBuild && gm.metal >= 5)
         {
             buildTurret();
