@@ -27,7 +27,11 @@ public class TowerScript : MonoBehaviour
     private float fireRate = 0.25f;
     private float timeUntilFire = 0.25f;
 
+    private float slowRate = 0.75f;
+    private float unfreezeRate = 1.33f;
+
     public bool upgraded;
+    private bool fullyUpgraded;
 
     public Text metalCost;
     public Text gutsCost;
@@ -91,8 +95,8 @@ public class TowerScript : MonoBehaviour
         if(towerType == "mech"){
 
         }
-        if(towerType == "alie"){
-
+        if(towerType == "alien"){
+            freeze();
         }
     }
 
@@ -123,7 +127,7 @@ public class TowerScript : MonoBehaviour
 
     public void upgradeAlienTurret()
     {
-
+        fullyUpgraded = true;
     }
 
     public void upgradeMechTurret()
@@ -151,6 +155,28 @@ public class TowerScript : MonoBehaviour
             currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
         }
     }
+
+    private void freeze()
+    {
+        if (fullyUpgraded)
+        {
+
+        }
+        else
+        {
+            foreach (var enem in enemyList)
+            {
+                var eScript = enem.GetComponent<Enemy>();
+                if (!eScript.frozen)
+                {
+                    eScript.updateSpeed(eScript.speed * slowRate);
+                    eScript.frozen = true;
+                }
+                    
+            }
+        }
+    }
+
     public void enemyEnteredArea(Collider2D enemy)
     {
         enemyList.Add(enemy.gameObject);
@@ -158,6 +184,11 @@ public class TowerScript : MonoBehaviour
     public void enemyExitedArea(Collider2D enemy)
     {
         enemyList.Remove(enemy.gameObject);
+        if (towerType == "alien")
+        {
+            enemy.gameObject.GetComponent<Enemy>().updateSpeed(enemy.gameObject.GetComponent<Enemy>().speed * unfreezeRate);
+            enemy.gameObject.GetComponent<Enemy>().frozen = false;
+        }
     }
 
     public void enemyStayedArea(Collider2D enemy)

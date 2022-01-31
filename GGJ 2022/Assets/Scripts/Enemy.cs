@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float damage;
     public int score;
+
+    public bool frozen;
     
     public AIPath pathfind;
     private GameManager gm;
@@ -44,9 +46,17 @@ public class Enemy : MonoBehaviour
         }
         HealthBarL.fillAmount = HealthBarR.fillAmount = hp/totalHP;
     }
+
     private void takeDamage(int Damage){
         hp -= Damage;
     }
+
+    public void updateSpeed(float spd)
+    {
+        speed = spd;
+        pathfind.maxSpeed = speed;
+    }
+
     private IEnumerator Die(){
         dying = true;
         GetComponent<Collider2D>().enabled = false;
@@ -58,6 +68,7 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject);
         yield return null;
     }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("BULLET")){
