@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
                 gracePeriod -= Time.deltaTime;
         }else if(!StartGame.activeInHierarchy){
             BGM.Stop();
+            FindObjectOfType<Player_Controller>().inputVector = Vector2.zero;
             difficulty = 1f;
             difficultyTimer = 0f;
             enemySpawnRate = 3.5f;
