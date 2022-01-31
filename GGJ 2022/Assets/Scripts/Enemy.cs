@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         HealthBarL.fillAmount = HealthBarR.fillAmount = hp/totalHP;
     }
 
-    private void takeDamage(int Damage){
+    public void takeDamage(int Damage){
         hp -= Damage;
     }
 

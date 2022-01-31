@@ -18,7 +18,7 @@ public class Upgrade : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
-        notThisTurret = GameObject.Find("Dummy Target");
+        notThisTurret = GameObject.Find("DummyT");
     }
 
     // Update is called once per frame

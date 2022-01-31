@@ -37,6 +37,8 @@ public class TowerScript : MonoBehaviour
     public Text metalCost;
     public Text gutsCost;
 
+    private float mytimer = 0.5f;
+
 
     //ALIEN TOWER
         //AOE & SLOWS
@@ -78,7 +80,7 @@ public class TowerScript : MonoBehaviour
     {
         CircleCollider2D rangeCollider = range.GetComponent<CircleCollider2D>();
         BarrelDirection = Barrel.transform.up;
-        GameObject.Find("Game_Manager");
+        gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -104,6 +106,7 @@ public class TowerScript : MonoBehaviour
             }
         }
         if(towerType == "alien"){
+            mytimer -= Time.deltaTime;
             freeze();
         }
     }
@@ -136,10 +139,15 @@ public class TowerScript : MonoBehaviour
     public void upgradeAlienTurret()
     {
         fullyUpgraded = true;
+        //hide upgrade menu
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     public void upgradeMechTurret()
     {
+        fullyUpgraded = true;
+        transform.GetChild(1).gameObject.SetActive(false);
+        //hide upgrade menu
          if (enemyList.Count > 0)
         {
             //choose first character that is inside of the list in order to attack at
@@ -167,7 +175,14 @@ public class TowerScript : MonoBehaviour
     {
         if (fullyUpgraded)
         {
-
+            if (mytimer <= 0)
+            {
+                foreach (var enem in enemyList) {
+                    var eScript = enem.GetComponent<Enemy>();
+                    eScript.takeDamage(4);
+                }
+                mytimer = 0.5f;
+            }
         }
         else
         {
