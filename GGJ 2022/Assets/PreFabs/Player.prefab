@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 2709961962992995118, guid: 088c506097c1e0b4db5d25ac00d44e49, type: 3}
+  indicator: {fileID: 7168225768572615650}
 --- !u!58 &5957630249478594418
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -469,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8988010817095083801
 Transform:
   m_ObjectHideFlags: 0
