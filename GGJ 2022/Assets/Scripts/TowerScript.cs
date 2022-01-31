@@ -12,9 +12,10 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private List<Sprite> spriteCollection = new List<Sprite>();
     [SerializeField] public int Damage = 100;
     [SerializeField] public GameObject Barrel;
-    [SerializeField] public GameObject BarrelOne;
     [SerializeField] public GameObject BarrelTwo;
     [SerializeField] Transform FiringPoint;
+    [SerializeField] Transform FiringPointOne;
+    [SerializeField] Transform FiringPointTwo;
     [SerializeField] private float BarrelRotateSpeed = 20f;
 
     private GameManager gm;
@@ -89,7 +90,14 @@ public class TowerScript : MonoBehaviour
             }
         }
         if(towerType == "mech"){
-
+            BarrelTwo.transform.up = Vector3.Lerp(Barrel.transform.up, BarrelDirection, BarrelRotateSpeed * Time.deltaTime);
+            BarrelTwo.transform.RotateAround(this.transform.position, Vector3.up, 20 * Time.deltaTime);
+            timeUntilFire -= Time.deltaTime;
+            if (timeUntilFire <= 0)
+            {
+                Doublefire();
+                timeUntilFire = fireRate;
+            }
         }
         if(towerType == "alie"){
 
@@ -149,6 +157,20 @@ public class TowerScript : MonoBehaviour
             GameObject currBullet = Instantiate(bullet, FiringPoint.position, Quaternion.identity);
             currBullet.GetComponent<BulletScript>().Damage = this.Damage;
             currBullet.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized; 
+        }
+    }
+    private void Doublefire(){
+        if (enemyList.Count > 0)
+        {
+            //choose first character that is inside of the list in order to attack at
+            GameObject currTarget = enemyList[0];
+            GameObject currBullet1 = Instantiate(bullet, FiringPointOne.position, Quaternion.identity);
+            GameObject currBullet2 = Instantiate(bullet, FiringPointTwo.position, Quaternion.identity);
+            currBullet1.GetComponent<BulletScript>().Damage = this.Damage;
+            currBullet1.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized;
+            currBullet2.GetComponent<BulletScript>().Damage = this.Damage;
+            currBullet2.GetComponent<BulletScript>().direction = BarrelDirection = (currTarget.transform.position - transform.position).normalized;
+            
         }
     }
     public void enemyEnteredArea(Collider2D enemy)
