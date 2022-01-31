@@ -15820,7 +15820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2205679118194012448, guid: 2891b0dccd4fd334f87cda76308b5f2d, type: 3}
   gm: {fileID: 562839597}
-  baseHealth: 12.5
+  baseHealth: 25
   baseSpeed: 2
   baseDamage: 6
   baseScore: 10

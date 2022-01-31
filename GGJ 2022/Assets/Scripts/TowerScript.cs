@@ -32,7 +32,7 @@ public class TowerScript : MonoBehaviour
     private float unfreezeRate = 1.33f;
 
     public bool upgraded;
-    private bool fullyUpgraded;
+    public bool fullyUpgraded;
 
     public Text metalCost;
     public Text gutsCost;
@@ -124,6 +124,8 @@ public class TowerScript : MonoBehaviour
         updateTowerType("alien");
         //spend resources
         gm.guts -= 5;
+
+        upgraded = true;
     }
 
     public void upgradeToMetal()
@@ -137,6 +139,8 @@ public class TowerScript : MonoBehaviour
 
         //spend resources
         gm.metal -= 5;
+
+        upgraded = true;
     }
 
     public void upgradeAlienTurret()
