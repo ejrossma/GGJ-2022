@@ -64,10 +64,12 @@ public class Upgrade : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Mouse0) && turretSelected && canUpgrade && upgrading && gm.metal >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded == true)
         {
             selectedTurret.GetComponent<TowerScript>().upgradeMechTurret();
+            showUpgrades();
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1) && turretSelected && canUpgrade && upgrading && gm.guts >= 5 && selectedTurret.GetComponent<TowerScript>().upgraded == true)
         {
             selectedTurret.GetComponent<TowerScript>().upgradeAlienTurret();
+            showUpgrades();
         }
     }
     //show two upgrade paths
@@ -85,48 +87,50 @@ public class Upgrade : MonoBehaviour
             //increased fire rate
     private void showUpgrades()
     {
-        if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "alien")
-        {
-            //show upgrades + text
-            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+        if (!selectedTurret.GetComponent<TowerScript>().fullyUpgraded) {
+            if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "alien")
+            {
+                //show upgrades + text
+                selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
 
-            //hide mech upgrades
-            selectedTurret.GetComponent<TowerScript>().metalCost.enabled = false;
-            //hide metal icon
-            selectedTurret.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
+                //hide mech upgrades
+                selectedTurret.GetComponent<TowerScript>().metalCost.enabled = false;
+                //hide metal icon
+                selectedTurret.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
 
-            //hide mouse indicator
-            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+                //hide mouse indicator
+                selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
 
-            //show hammer
-            transform.parent.GetChild(3).gameObject.SetActive(true);
+                //show hammer
+                transform.parent.GetChild(3).gameObject.SetActive(true);
 
-        }
-        else if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "mech")
-        {
-            //show upgrades + text
-            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else if (selectedTurret.GetComponent<TowerScript>().getTowerType() == "mech")
+            {
+                //show upgrades + text
+                selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
 
-            //hide alien cost
-            selectedTurret.GetComponent<TowerScript>().gutsCost.enabled = false;
-            //hide guts icon
-            selectedTurret.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+                //hide alien cost
+                selectedTurret.GetComponent<TowerScript>().gutsCost.enabled = false;
+                //hide guts icon
+                selectedTurret.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
 
-            //hide mouse indicator
-            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+                //hide mouse indicator
+                selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
 
-            //show hammer
-            transform.parent.GetChild(3).gameObject.SetActive(true);
-        }
-        else
-        {
-            //show upgrades
-            selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
-            //hide mouse indicator
-            selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
-            //show hammer
-            transform.parent.GetChild(3).gameObject.SetActive(true);
-        }
+                //show hammer
+                transform.parent.GetChild(3).gameObject.SetActive(true);
+            }
+            else
+            {
+                //show upgrades
+                selectedTurret.transform.GetChild(1).gameObject.SetActive(true);
+                //hide mouse indicator
+                selectedTurret.transform.GetChild(0).gameObject.SetActive(false);
+                //show hammer
+                transform.parent.GetChild(3).gameObject.SetActive(true);
+            }
+        } 
     }
 
     private void hideUpgrades()
